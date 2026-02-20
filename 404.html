@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Not Found</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="cardInner">
+          <div class="kicker"><span class="dot"></span> 404</div>
+          <h1>Page not found.</h1>
+          <p class="sub">This page doesn’t exist. Go back home.</p>
+          <div class="btnRow">
+            <a class="btn primary" href="index.html">🏠 Back Home</a>
+            <a class="btn" href="projects.html">⚡ Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="footer">© <span id="y"></span> Benjiem</div>
+  </main>
+
+  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</body>
+</html>

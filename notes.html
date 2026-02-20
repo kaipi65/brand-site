@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Notes — Benjiem</title>
+  <meta name="description" content="Notes by Benjiem — learning logs and system thinking." />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="logo"></span><span>Benjiem</span></a>
+      <nav class="menu">
+        <a class="pill" data-nav href="index.html">Home</a>
+        <a class="pill" data-nav href="about.html">About</a>
+        <a class="pill" data-nav href="projects.html">Projects</a>
+        <a class="pill" data-nav href="ai-lab.html">AI Lab</a>
+        <a class="pill" data-nav href="notes.html">Notes</a>
+        <a class="cta" href="index.html#contact"><span>Contact</span><small>work w/ me</small></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="cardInner">
+          <div class="kicker"><span class="dot"></span> Notes</div>
+          <h1>Learning logs.</h1>
+          <p class="sub">Write short notes. Consistency beats perfection.</p>
+
+          <div class="list">
+            <div class="item">
+              <div class="left">
+                <div class="name">Cloudflare Pages deployment checklist</div>
+                <div class="desc">Folder structure, index.html, custom domain, SSL, redirect rules.</div>
+              </div>
+              <span class="tag">guide</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">SEO basics for static sites</div>
+                <div class="desc">Title/description, sitemap, robots, clean URLs, speed.</div>
+              </div>
+              <span class="tag">seo</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">AI agents: SOP mindset</div>
+                <div class="desc">Break tasks into steps, tools, checks, and outputs.</div>
+              </div>
+              <span class="tag">ai</span>
+            </div>
+          </div>
+
+          <p class="note" style="margin-top:14px">
+            Later you can convert notes to markdown + generate pages automatically (we’ll do that when你准备好).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="y"></span> Benjiem</div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</body>
+</html>

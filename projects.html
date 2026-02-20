@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects — Benjiem</title>
+  <meta name="description" content="Projects by Benjiem — experiments, tools, and systems." />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="logo"></span><span>Benjiem</span></a>
+      <nav class="menu">
+        <a class="pill" data-nav href="index.html">Home</a>
+        <a class="pill" data-nav href="about.html">About</a>
+        <a class="pill" data-nav href="projects.html">Projects</a>
+        <a class="pill" data-nav href="ai-lab.html">AI Lab</a>
+        <a class="pill" data-nav href="notes.html">Notes</a>
+        <a class="cta" href="index.html#contact"><span>Contact</span><small>work w/ me</small></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="cardInner">
+          <div class="kicker"><span class="dot"></span> Projects</div>
+          <h1>Shipped & Shipping.</h1>
+          <p class="sub">Put real links here later. For now, list what you’re building.</p>
+          <div class="list">
+            <div class="item">
+              <div class="left">
+                <div class="name">AI Workflow Starter</div>
+                <div class="desc">A simple automation pipeline: input → LLM → output → save.</div>
+              </div>
+              <span class="tag">in progress</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">Cloudflare Pages Site</div>
+                <div class="desc">This website template, deployed with custom domain + SSL.</div>
+              </div>
+              <span class="tag">live</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">Workers API Prototype</div>
+                <div class="desc">Plan: a small API endpoint to power form submit + notifications.</div>
+              </div>
+              <span class="tag">next</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="y"></span> Benjiem</div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</body>
+</html>

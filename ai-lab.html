@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Lab — Benjiem</title>
+  <meta name="description" content="AI Lab — experiments with agents, automation, and internet systems." />
+  <link rel="icon" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html"><span class="logo"></span><span>Benjiem</span></a>
+      <nav class="menu">
+        <a class="pill" data-nav href="index.html">Home</a>
+        <a class="pill" data-nav href="about.html">About</a>
+        <a class="pill" data-nav href="projects.html">Projects</a>
+        <a class="pill" data-nav href="ai-lab.html">AI Lab</a>
+        <a class="pill" data-nav href="notes.html">Notes</a>
+        <a class="cta" href="index.html#contact"><span>Contact</span><small>work w/ me</small></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="cardInner">
+          <div class="kicker"><span class="dot"></span> AI Lab</div>
+          <h1>Experiments & Prototypes.</h1>
+          <p class="sub">
+            Keep this page as a “public lab notebook”. It makes your site instantly credible.
+          </p>
+
+          <div class="grid3">
+            <div class="mini">
+              <div class="t">Agents</div>
+              <div class="d">Task planning, tool use, SOP flows, and safe guardrails.</div>
+            </div>
+            <div class="mini">
+              <div class="t">Automation</div>
+              <div class="d">Inputs → processing → storage → notifications → dashboards.</div>
+            </div>
+            <div class="mini">
+              <div class="t">Infra</div>
+              <div class="d">Cloudflare Workers, R2, KV, caching and routing patterns.</div>
+            </div>
+          </div>
+
+          <hr class="sep" />
+
+          <div class="list">
+            <div class="item">
+              <div class="left">
+                <div class="name">Experiment #001 — Prompt Pack</div>
+                <div class="desc">Reusable prompts for content extraction / rewriting / summarization.</div>
+              </div>
+              <span class="tag">draft</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">Experiment #002 — Form → Email</div>
+                <div class="desc">Plan: use Workers to receive a form submission and send email.</div>
+              </div>
+              <span class="tag">next</span>
+            </div>
+            <div class="item">
+              <div class="left">
+                <div class="name">Experiment #003 — Static + SEO</div>
+                <div class="desc">Titles, descriptions, sitemap, robots + clean URL structure.</div>
+              </div>
+              <span class="tag">ready</span>
+            </div>
+          </div>
+
+          <p class="note" style="margin-top:14px">
+            Later we can add a real “Contact form” and connect it to a Worker API.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="y"></span> Benjiem</div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Prompt Optimizer | Benjiem</title>
+<meta name="description" content="Optimize your AI prompts into professional, structured instructions. Built by AI Automation Specialist.">
+
+<style>
+body{
+    background:#0f172a;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    margin:0;
+    padding:40px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:15px;
+    border-radius:8px;
+    border:none;
+    font-size:16px;
+    margin-top:20px;
+}
+
+button{
+    margin-top:15px;
+    padding:12px 20px;
+    border:none;
+    border-radius:6px;
+    background:linear-gradient(90deg,#00f0ff,#6a00ff);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:30px;
+    padding:20px;
+    background:#1e293b;
+    border-radius:10px;
+    white-space:pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Prompt Optimizer</h1>
+<p>Turn simple ideas into structured, professional AI prompts.</p>
+
+<textarea id="inputPrompt" placeholder="Enter your simple prompt..."></textarea>
+<button onclick="optimize()">Optimize Prompt</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function optimize(){
+    let input = document.getElementById("inputPrompt").value;
+
+    let optimized = `
+Role:
+You are an expert AI system.
+
+Task:
+${input}
+
+Context:
+Provide detailed explanation, structured format, and practical examples.
+
+Tone:
+Professional, clear, and actionable.
+
+Output Format:
+- Clear sections
+- Bullet points where necessary
+- Step-by-step breakdown if applicable
+`;
+
+    document.getElementById("result").innerText = optimized;
+}
+</script>
+
+</body>
+</html>
