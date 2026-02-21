@@ -163,6 +163,18 @@
       font-size: 12.5px;
     }
   }
+#bgmToggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+#bgmToggle.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+}
 </style>
 
 <meta property="og:title" content="Benjiem | AI Automation Specialist" />
@@ -338,7 +350,19 @@
     const btn = document.getElementById("bgmToggle");
 
     // Recommended background volume: 0.08 ~ 0.18
-    audio.volume = 0.12;
+    audio.volume = 0;
+const targetVolume = 0.12;
+
+function fadeInAudio() {
+  const step = 0.01;
+  const interval = setInterval(() => {
+    if (audio.volume < targetVolume) {
+      audio.volume = Math.min(audio.volume + step, targetVolume);
+    } else {
+      clearInterval(interval);
+    }
+  }, 60);
+}
 
     // Autoplay policy: try muted autoplay first
     audio.muted = true;
@@ -359,8 +383,10 @@
     const unlock = async () => {
       try {
         audio.muted = false;
-        await audio.play();
-        setBtnState(true);
+await audio.play();
+fadeInAudio();
+setBtnState(true);
+     
       } catch (e) {
         // If blocked, user can manually toggle
       } finally {
@@ -393,13 +419,17 @@
 
     if (video) {
       video.addEventListener("play", () => {
-        // Remember whether BGM was playing before video starts
-        resumeBgmAfterVideo = !audio.paused;
-        if (!audio.paused) {
-          audio.pause();
-          setBtnState(false);
-        }
-      });
+  // 记录视频开始前 BGM 是否在播放
+  resumeBgmAfterVideo = !audio.paused;
+
+  if (!audio.paused) {
+    audio.pause();
+    setBtnState(false);
+  }
+
+  // 👇 视频播放时隐藏 BGM 按钮
+  btn.classList.add("hidden");
+});
 
       const tryResumeBgm = async () => {
         if (!resumeBgmAfterVideo) return;
@@ -413,8 +443,15 @@
         }
       };
 
-      video.addEventListener("pause", tryResumeBgm);
-      video.addEventListener("ended", tryResumeBgm);
+      video.addEventListener("pause", () => {
+  tryResumeBgm();
+  btn.classList.remove("hidden");  // 恢复按钮
+});
+
+video.addEventListener("ended", () => {
+  tryResumeBgm();
+  btn.classList.remove("hidden");  // 恢复按钮
+});
     }
 
     // Initial button state
