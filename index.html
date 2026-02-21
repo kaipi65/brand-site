@@ -9,7 +9,8 @@
 <meta name="keywords" content="AI Automation, AI Systems, Automation Specialist, AI Agent Systems, Workflow Automation, AI Infrastructure" />
 <meta name="author" content="Benjiem" />
 
-<link rel="stylesheet" href="assets/style.css" /><link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
 <style>
   .video-showcase {
@@ -17,7 +18,7 @@
     margin-bottom: 4rem;
     text-align: center;
   }
-  
+
   .video-frame {
     width: 100%;
     max-width: 1000px; /* 限制视频最大宽度，防止在大屏上过大 */
@@ -34,6 +35,133 @@
     height: auto;
     display: block;
     object-fit: cover;
+  }
+
+  /* =========================
+     Cyber BGM Toggle Button (index-only)
+     ========================= */
+  #bgmToggle{
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 14px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(255,255,255,.14);
+    background: linear-gradient(180deg, rgba(12,16,26,.70), rgba(8,10,18,.48));
+    color: rgba(255,255,255,.92);
+    cursor: pointer;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    font: 650 13px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    letter-spacing: .45px;
+
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.06) inset,
+      0 10px 28px rgba(0,0,0,.38);
+
+    transform: translateZ(0);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  #bgmToggle::before{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7cf7ff, #a78bfa, #2ee59d, #7cf7ff);
+    filter: blur(12px);
+    opacity: .55;
+    z-index: -2;
+    transition: opacity .18s ease, filter .18s ease;
+    pointer-events: none;
+  }
+
+  #bgmToggle::after{
+    content:"";
+    position:absolute;
+    inset: 0;
+    border-radius: 999px;
+    background:
+      radial-gradient(120% 80% at 20% 10%, rgba(255,255,255,.22), transparent 55%),
+      linear-gradient(90deg, rgba(255,255,255,.10), transparent 45%, rgba(255,255,255,.06));
+    opacity: .85;
+    pointer-events:none;
+    z-index: 0;
+  }
+
+  #bgmToggle .cyb-dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.35);
+    box-shadow: 0 0 14px rgba(255,255,255,.10);
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  #bgmToggle .cyb-text{
+    position: relative;
+    z-index: 1;
+    color: rgba(255,255,255,.90);
+  }
+
+  #bgmToggle:hover{
+    transform: translateY(-1px);
+    border-color: rgba(255,255,255,.28);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.10) inset,
+      0 16px 34px rgba(0,0,0,.45),
+      0 0 34px rgba(167,139,250,.12);
+  }
+  #bgmToggle:hover::before{
+    opacity: .85;
+    filter: blur(14px);
+  }
+
+  #bgmToggle.is-on{
+    border-color: rgba(255,255,255,.24);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,.08) inset,
+      0 10px 28px rgba(0,0,0,.38),
+      0 0 28px rgba(124,247,255,.14);
+    animation: bgmPulse 2.2s ease-in-out infinite;
+  }
+  #bgmToggle.is-on::before{
+    opacity: .80;
+    filter: blur(16px);
+  }
+  #bgmToggle.is-on .cyb-dot{
+    background: #2ee59d;
+    box-shadow: 0 0 18px rgba(46,229,157,.55);
+  }
+
+  @keyframes bgmPulse{
+    0%,100%{ transform: translateZ(0) scale(1); }
+    50%{ transform: translateZ(0) scale(1.02); }
+  }
+
+  @media (max-width: 520px){
+    #bgmToggle{
+      right: 14px;
+      bottom: 14px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+    }
   }
 </style>
 
@@ -79,48 +207,48 @@
 <main class="container">
 
 <section class="hero">
-<div class="heroGrid">
-<div class="card">
-<div class="cardInner">
+  <div class="heroGrid">
+    <div class="card">
+      <div class="cardInner">
 
-<div class="kicker">
-<span class="dot"></span>
-AI Automation Specialist
-</div>
+        <div class="kicker">
+          <span class="dot"></span>
+          AI Automation Specialist
+        </div>
 
-<h1>
-Building Scalable AI Automation Systems
-</h1>
+        <h1>
+          Building Scalable AI Automation Systems
+        </h1>
 
-<p class="sub">
-I design AI-driven automation systems, agent workflows, and scalable internet architectures.
-My focus is turning complex AI capabilities into structured, deployable, and production-ready systems.
-</p>
+        <p class="sub">
+          I design AI-driven automation systems, agent workflows, and scalable internet architectures.
+          My focus is turning complex AI capabilities into structured, deployable, and production-ready systems.
+        </p>
 
-<div class="btnRow">
-<a class="btn primary" href="projects.html">⚡ View Projects</a>
-<a class="btn" href="ai-lab.html">🧠 AI Lab</a>
-<a class="btn" href="notes.html">📚 Notes</a>
-</div>
+        <div class="btnRow">
+          <a class="btn primary" href="projects.html">⚡ View Projects</a>
+          <a class="btn" href="ai-lab.html">🧠 AI Lab</a>
+          <a class="btn" href="notes.html">📚 Notes</a>
+        </div>
 
-<div class="features">
-<div>
-<strong>AI Systems</strong><br/>
-Agent orchestration & architecture
-</div>
-<div>
-<strong>Automation</strong><br/>
-Workflow & pipeline design
-</div>
-<div>
-<strong>Infrastructure</strong><br/>
-Scalable deployment models
-</div>
-</div>
+        <div class="features">
+          <div>
+            <strong>AI Systems</strong><br/>
+            Agent orchestration & architecture
+          </div>
+          <div>
+            <strong>Automation</strong><br/>
+            Workflow & pipeline design
+          </div>
+          <div>
+            <strong>Infrastructure</strong><br/>
+            Scalable deployment models
+          </div>
+        </div>
 
-</div>
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="video-showcase">
@@ -131,34 +259,36 @@ Scalable deployment models
     </video>
   </div>
 </section>
+
 <section class="section">
-<h2>What I Do</h2>
+  <h2>What I Do</h2>
 
-<div class="grid3">
+  <div class="grid3">
 
-<div class="card">
-<h3>AI Systems Architecture</h3>
-<p>
-Designing modular AI systems using APIs, cloud services, and automation frameworks.
-</p>
-</div>
+    <div class="card">
+      <h3>AI Systems Architecture</h3>
+      <p>
+        Designing modular AI systems using APIs, cloud services, and automation frameworks.
+      </p>
+    </div>
 
-<div class="card">
-<h3>Automation Engineering</h3>
-<p>
-Building end-to-end automation pipelines that reduce manual processes and scale intelligently.
-</p>
-</div>
+    <div class="card">
+      <h3>Automation Engineering</h3>
+      <p>
+        Building end-to-end automation pipelines that reduce manual processes and scale intelligently.
+      </p>
+    </div>
 
-<div class="card">
-<h3>Internet Infrastructure Thinking</h3>
-<p>
-Combining AI, cloud, and lightweight front-end systems into scalable digital products.
-</p>
-</div>
+    <div class="card">
+      <h3>Internet Infrastructure Thinking</h3>
+      <p>
+        Combining AI, cloud, and lightweight front-end systems into scalable digital products.
+      </p>
+    </div>
 
-</div>
+  </div>
 </section>
+
 <section class="featured-tool">
   <h2>Featured Tool</h2>
   <div class="tool-card">
@@ -173,26 +303,94 @@ Combining AI, cloud, and lightweight front-end systems into scalable digital pro
   </div>
 </section>
 
-
 <section class="section" id="contact">
-<h2>Contact</h2>
-<p>
-For collaboration, consulting, or AI automation system design inquiries:
-</p>
-<p>
-Email: <a href="mailto:benktc1975@gmail.com">benktc1975@gmail.com</a>
-</p>
+  <h2>Contact</h2>
+  <p>
+    For collaboration, consulting, or AI automation system design inquiries:
+  </p>
+  <p>
+    Email: <a href="mailto:benktc1975@gmail.com">benktc1975@gmail.com</a>
+  </p>
 </section>
 
 </main>
 
 <footer class="container footer">
-<p>
-© 2026 Benjiem — AI Automation Specialist
-</p>
+  <p>
+    © 2026 Benjiem — AI Automation Specialist
+  </p>
 </footer>
 
 <script src="assets/app.js"></script>
+
+<!-- 背景音乐：把 bgm.mp3 放到你自己站点的 /assets/ 目录 -->
+<audio id="bgm" src="assets/bgm.mp3" preload="auto" loop playsinline></audio>
+
+<button id="bgmToggle" type="button" aria-label="Background music toggle">
+  <span class="cyb-dot" aria-hidden="true"></span>
+  <span class="cyb-text">🔇 BGM</span>
+</button>
+
+<script>
+  (function () {
+    const audio = document.getElementById("bgm");
+    const btn = document.getElementById("bgmToggle");
+
+    // 建议网站背景音量：0.08 ~ 0.18
+    audio.volume = 0.12;
+
+    // 现代浏览器通常禁止“带声音自动播放”
+    // 方案：先静音尝试 autoplay；用户第一次点击页面时再真正播放并可开声
+    audio.muted = true;
+
+    async function tryAutoplayMuted() {
+      try { await audio.play(); } catch (e) { /* ignore */ }
+    }
+
+    function setBtnState(playing) {
+      btn.classList.toggle("is-on", playing);
+      btn.querySelector(".cyb-text").textContent = playing ? "🔊 BGM" : "🔇 BGM";
+    }
+
+    // 进入页面先尝试“静音自动播”（大概率可行）
+    tryAutoplayMuted();
+
+    // 用户第一次交互后：解除静音并播放（保证成功率）
+    const unlock = async () => {
+      try {
+        audio.muted = false;
+        await audio.play();
+        setBtnState(true);
+      } catch (e) {
+        // 如果仍被阻止，保持按钮让用户手动开启
+      } finally {
+        window.removeEventListener("pointerdown", unlock);
+        window.removeEventListener("keydown", unlock);
+      }
+    };
+    window.addEventListener("pointerdown", unlock, { once: true });
+    window.addEventListener("keydown", unlock, { once: true });
+
+    // 手动开关
+    btn.addEventListener("click", async () => {
+      if (!audio.paused) {
+        audio.pause();
+        setBtnState(false);
+        return;
+      }
+      try {
+        audio.muted = false;
+        await audio.play();
+        setBtnState(true);
+      } catch (e) {
+        // 播放失败就不变
+      }
+    });
+
+    // 初始按钮状态
+    setBtnState(false);
+  })();
+</script>
 
 </body>
 </html>
