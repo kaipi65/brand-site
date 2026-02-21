@@ -253,7 +253,8 @@
 
 <section class="video-showcase">
   <div class="video-frame">
-    <video autoplay loop muted playsinline>
+    <!-- Mode B: with sound, user-initiated playback -->
+    <video id="heroVideo" controls playsinline>
       <source src="assets/video.mp4" type="video/mp4">
       您的浏览器不支持 HTML5 视频标签。
     </video>
@@ -323,7 +324,7 @@
 
 <script src="assets/app.js"></script>
 
-<!-- 背景音乐：把 bgm.mp3 放到你自己站点的 /assets/ 目录 -->
+<!-- Background Music -->
 <audio id="bgm" src="assets/bgm.mp3" preload="auto" loop playsinline></audio>
 
 <button id="bgmToggle" type="button" aria-label="Background music toggle">
@@ -336,11 +337,10 @@
     const audio = document.getElementById("bgm");
     const btn = document.getElementById("bgmToggle");
 
-    // 建议网站背景音量：0.08 ~ 0.18
+    // Recommended background volume: 0.08 ~ 0.18
     audio.volume = 0.12;
 
-    // 现代浏览器通常禁止“带声音自动播放”
-    // 方案：先静音尝试 autoplay；用户第一次点击页面时再真正播放并可开声
+    // Autoplay policy: try muted autoplay first
     audio.muted = true;
 
     async function tryAutoplayMuted() {
@@ -352,17 +352,17 @@
       btn.querySelector(".cyb-text").textContent = playing ? "🔊 BGM" : "🔇 BGM";
     }
 
-    // 进入页面先尝试“静音自动播”（大概率可行）
+    // Attempt muted autoplay on load
     tryAutoplayMuted();
 
-    // 用户第一次交互后：解除静音并播放（保证成功率）
+    // Unlock audio on first user interaction
     const unlock = async () => {
       try {
         audio.muted = false;
         await audio.play();
         setBtnState(true);
       } catch (e) {
-        // 如果仍被阻止，保持按钮让用户手动开启
+        // If blocked, user can manually toggle
       } finally {
         window.removeEventListener("pointerdown", unlock);
         window.removeEventListener("keydown", unlock);
@@ -371,7 +371,7 @@
     window.addEventListener("pointerdown", unlock, { once: true });
     window.addEventListener("keydown", unlock, { once: true });
 
-    // 手动开关
+    // Manual toggle
     btn.addEventListener("click", async () => {
       if (!audio.paused) {
         audio.pause();
@@ -383,11 +383,41 @@
         await audio.play();
         setBtnState(true);
       } catch (e) {
-        // 播放失败就不变
+        // ignore
       }
     });
 
-    // 初始按钮状态
+    // === Pro UX: pause BGM when video plays (avoid double audio) ===
+    const video = document.getElementById("heroVideo");
+    let resumeBgmAfterVideo = false;
+
+    if (video) {
+      video.addEventListener("play", () => {
+        // Remember whether BGM was playing before video starts
+        resumeBgmAfterVideo = !audio.paused;
+        if (!audio.paused) {
+          audio.pause();
+          setBtnState(false);
+        }
+      });
+
+      const tryResumeBgm = async () => {
+        if (!resumeBgmAfterVideo) return;
+        resumeBgmAfterVideo = false;
+        try {
+          audio.muted = false;
+          await audio.play();
+          setBtnState(true);
+        } catch (e) {
+          // If blocked, keep off and let user toggle manually
+        }
+      };
+
+      video.addEventListener("pause", tryResumeBgm);
+      video.addEventListener("ended", tryResumeBgm);
+    }
+
+    // Initial button state
     setBtnState(false);
   })();
 </script>
