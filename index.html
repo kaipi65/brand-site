@@ -1,198 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Benjiem | AI Automation Specialist</title>
-<meta name="description" content="AI Automation Specialist building scalable AI systems, automation pipelines, and internet infrastructure frameworks." />
-<meta name="keywords" content="AI Automation, AI Systems, Automation Specialist, AI Agent Systems, Workflow Automation, AI Infrastructure" />
-<meta name="author" content="Benjiem" />
+<title>Benjiem | AI 探索与个人数字花园</title>
+<meta name="description" content="分享 AI 自动化、小程序开发、技术探索与无版权影音记录。" />
 
 <link rel="stylesheet" href="assets/style.css" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
 <style>
-  .video-showcase {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    text-align: center;
+  .media-showcase { margin: 3rem 0; text-align: center; }
+  .media-frame {
+    width: 100%; max-width: 900px; margin: 0 auto 1.5rem auto;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-color: #000;
   }
-
-  .video-frame {
-    width: 100%;
-    max-width: 1000px; /* 限制视频最大宽度，防止在大屏上过大 */
-    margin: 0 auto;
-    border-radius: 12px; /* 圆角效果 */
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* 增加阴影提升立体感 */
-    background-color: #000; /* 视频加载前的背景色 */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  .media-frame video { width: 100%; height: auto; display: block; object-fit: cover; }
+  .audio-player-wrapper {
+    background: rgba(255, 255, 255, 0.05); padding: 15px; border-radius: 8px;
+    display: inline-block; border: 1px solid rgba(255,255,255,0.1);
   }
-
-  .video-frame video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-  }
-
-  /* =========================
-     Cyber BGM Toggle Button (index-only)
-     ========================= */
-  #bgmToggle{
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 9999;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 11px 14px;
-    border-radius: 999px;
-
-    border: 1px solid rgba(255,255,255,.14);
-    background: linear-gradient(180deg, rgba(12,16,26,.70), rgba(8,10,18,.48));
-    color: rgba(255,255,255,.92);
-    cursor: pointer;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    font: 650 13px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    letter-spacing: .45px;
-
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.06) inset,
-      0 10px 28px rgba(0,0,0,.38);
-
-    transform: translateZ(0);
-    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-
-    overflow: hidden;
-    isolation: isolate;
-  }
-
-  #bgmToggle::before{
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #7cf7ff, #a78bfa, #2ee59d, #7cf7ff);
-    filter: blur(12px);
-    opacity: .55;
-    z-index: -2;
-    transition: opacity .18s ease, filter .18s ease;
-    pointer-events: none;
-  }
-
-  #bgmToggle::after{
-    content:"";
-    position:absolute;
-    inset: 0;
-    border-radius: 999px;
-    background:
-      radial-gradient(120% 80% at 20% 10%, rgba(255,255,255,.22), transparent 55%),
-      linear-gradient(90deg, rgba(255,255,255,.10), transparent 45%, rgba(255,255,255,.06));
-    opacity: .85;
-    pointer-events:none;
-    z-index: 0;
-  }
-
-  #bgmToggle .cyb-dot{
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.35);
-    box-shadow: 0 0 14px rgba(255,255,255,.10);
-    flex: 0 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  #bgmToggle .cyb-text{
-    position: relative;
-    z-index: 1;
-    color: rgba(255,255,255,.90);
-  }
-
-  #bgmToggle:hover{
-    transform: translateY(-1px);
-    border-color: rgba(255,255,255,.28);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.10) inset,
-      0 16px 34px rgba(0,0,0,.45),
-      0 0 34px rgba(167,139,250,.12);
-  }
-  #bgmToggle:hover::before{
-    opacity: .85;
-    filter: blur(14px);
-  }
-
-  #bgmToggle.is-on{
-    border-color: rgba(255,255,255,.24);
-    box-shadow:
-      0 0 0 1px rgba(255,255,255,.08) inset,
-      0 10px 28px rgba(0,0,0,.38),
-      0 0 28px rgba(124,247,255,.14);
-    animation: bgmPulse 2.2s ease-in-out infinite;
-  }
-  #bgmToggle.is-on::before{
-    opacity: .80;
-    filter: blur(16px);
-  }
-  #bgmToggle.is-on .cyb-dot{
-    background: #2ee59d;
-    box-shadow: 0 0 18px rgba(46,229,157,.55);
-  }
-
-  @keyframes bgmPulse{
-    0%,100%{ transform: translateZ(0) scale(1); }
-    50%{ transform: translateZ(0) scale(1.02); }
-  }
-
-  @media (max-width: 520px){
-    #bgmToggle{
-      right: 14px;
-      bottom: 14px;
-      padding: 10px 12px;
-      font-size: 12.5px;
-    }
-  }
-#bgmToggle.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity .35s ease, transform .35s ease;
-}
-#bgmToggle.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity .35s ease, transform .35s ease;
-}
 </style>
-
-<meta property="og:title" content="Benjiem | AI Automation Specialist" />
-<meta property="og:description" content="Building AI automation systems and scalable internet frameworks." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://benjiem.com/" />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Benjiem",
-  "url": "https://benjiem.com",
-  "jobTitle": "AI Automation Specialist",
-  "description": "AI Automation Specialist focused on AI systems design, automation pipelines, and scalable infrastructure.",
-  "sameAs": []
-}
-</script>
 
 </head>
 
@@ -206,12 +36,11 @@
     </a>
 
     <nav class="navbar" aria-label="Primary">
-      <a data-nav href="index.html" class="navlink">首页🚀测试</a>
-      <a data-nav href="about.html" class="navlink">关于</a>
-      <a data-nav href="projects.html" class="navlink">项目</a>
-      <a data-nav href="ai-lab.html" class="navlink">AI 实验室</a>
-      <a data-nav href="notes.html" class="navlink">笔记</a>
-      <a data-nav href="#contact" class="navlink nav-cta">联系</a>
+      <a data-nav href="index.html" class="navlink">首页</a>
+      <a data-nav href="blog.html" class="navlink">文章</a>
+      <a data-nav href="media.html" class="navlink">影音图库</a>
+      <a data-nav href="apps.html" class="navlink">小程序 & AI</a>
+      <a data-nav href="#contact" class="navlink nav-cta">联系我</a>
     </nav>
   </div>
 </header>
@@ -222,242 +51,96 @@
   <div class="heroGrid">
     <div class="card">
       <div class="cardInner">
-
-        <div class="kicker">
-          <span class="dot"></span>
-          AI Automation Specialist
-        </div>
-
-        <h1>
-          Building Scalable AI Automation Systems
-        </h1>
-
+        <div class="kicker"><span class="dot"></span>独立开发者 & 数字创作者</div>
+        <h1>欢迎来到我的数字花园</h1>
         <p class="sub">
-          I design AI-driven automation systems, agent workflows, and scalable internet architectures.
-          My focus is turning complex AI capabilities into structured, deployable, and production-ready systems.
+          这里收录了我在 AI 自动化领域的系统设计、轻量级小程序开发记录，以及我个人收集和创作的无版权视频、生成式艺术图片与音乐。
         </p>
-
         <div class="btnRow">
-          <a class="btn primary" href="projects.html">⚡ View Projects</a>
-          <a class="btn" href="ai-lab.html">🧠 AI Lab</a>
-          <a class="btn" href="notes.html">📚 Notes</a>
+          <a class="btn primary" href="#articles">阅读最新文章</a>
+          <a class="btn" href="#apps">体验 AI 应用</a>
         </div>
-
-        <div class="features">
-          <div>
-            <strong>AI Systems</strong><br/>
-            Agent orchestration & architecture
-          </div>
-          <div>
-            <strong>Automation</strong><br/>
-            Workflow & pipeline design
-          </div>
-          <div>
-            <strong>Infrastructure</strong><br/>
-            Scalable deployment models
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
 </section>
 
-<section class="video-showcase">
-  <div class="video-frame">
-    <!-- Mode B: with sound, user-initiated playback -->
-    <video id="heroVideo" controls playsinline>
+<section class="section" id="apps">
+  <h2>小程序 & AI 实验室</h2>
+  <div class="grid3">
+    <div class="card">
+      <h3>🤖 AI 提示词优化器</h3>
+      <p>将简单的想法转化为结构化、专业级的 AI 提示词，专为自动化工作流设计。</p>
+      <a href="prompt-optimizer.html" class="navlink">去使用 →</a>
+    </div>
+    <div class="card">
+      <h3>📱 iOS 快捷指令集</h3>
+      <p>我编写的实用 iOS 自动化脚本合集，包括一键视频转 GIF、无水印下载等实用功能。</p>
+      <a href="#" class="navlink">查看指令 →</a>
+    </div>
+    <div class="card">
+      <h3>⚡ 硬件与 PCB 分析助手</h3>
+      <p>基于大模型构建的智能助手，帮助快速梳理复杂的 AI 服务器 PCB 板层架构与制造难点。</p>
+      <a href="#" class="navlink">内测中...</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="articles">
+  <h2>最新手记</h2>
+  <div class="grid3">
+    <div class="card">
+      <span style="font-size: 0.8rem; color: #888;">技术硬核 | 2026-02-20</span>
+      <h3 style="margin-top: 0.5rem;">PC 硬件排障指南：从 BIOS 密码重置到风扇报错自救</h3>
+      <p>记录了近期几次棘手的主板报错排查过程，附带缺失 DLL 文件的终极解决思路。</p>
+    </div>
+    <div class="card">
+      <span style="font-size: 0.8rem; color: #888;">游戏随笔 | 2026-02-15</span>
+      <h3 style="margin-top: 0.5rem;">暗黑破坏神 4 (Diablo IV) 赛季体验与机制拆解</h3>
+      <p>从暗黑系列老玩家的视角，聊聊最新作的数值系统设计以及装备词缀的收益期望。</p>
+    </div>
+    <div class="card">
+      <span style="font-size: 0.8rem; color: #888;">AI 创作 | 2026-02-10</span>
+      <h3 style="margin-top: 0.5rem;">如何用 AI 实现精准的图像重绘与视频背景替换</h3>
+      <p>分享我使用生成式 AI 工具进行人物衣物修改、背景消除以及视频动态生成的实战技巧。</p>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="blog.html" class="btn">查看全部文章</a>
+  </div>
+</section>
+
+<section class="section media-showcase">
+  <h2>开源影音与生成艺术</h2>
+  <p style="color: #888; margin-bottom: 2rem;">本项目所有音乐、视频与图片素材均采用 CC0 无版权协议或由 AI 原创生成，欢迎自由取用。</p>
+  
+  <div class="media-frame">
+    <video autoplay loop muted playsinline>
       <source src="assets/video.mp4" type="video/mp4">
-      您的浏览器不支持 HTML5 视频标签。
     </video>
   </div>
-</section>
 
-<section class="section">
-  <h2>What I Do</h2>
-
-  <div class="grid3">
-
-    <div class="card">
-      <h3>AI Systems Architecture</h3>
-      <p>
-        Designing modular AI systems using APIs, cloud services, and automation frameworks.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Automation Engineering</h3>
-      <p>
-        Building end-to-end automation pipelines that reduce manual processes and scale intelligently.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Internet Infrastructure Thinking</h3>
-      <p>
-        Combining AI, cloud, and lightweight front-end systems into scalable digital products.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section class="featured-tool">
-  <h2>Featured Tool</h2>
-  <div class="tool-card">
-    <h3>AI Prompt Optimizer</h3>
-    <p>
-      Transform simple ideas into structured, professional AI prompts.
-      Built for AI automation workflows and prompt engineering.
-    </p>
-    <a href="prompt-optimizer.html" class="btn primary">
-      Try the Tool →
-    </a>
+  <div class="audio-player-wrapper">
+    <span style="font-size: 0.9rem; color: #ccc; margin-right: 15px;">🎵 赛博朋克环境音 (无版权)</span>
+    <audio controls loop style="height: 35px; vertical-align: middle;">
+      <source src="assets/bgm.mp3" type="audio/mpeg">
+    </audio>
   </div>
 </section>
 
 <section class="section" id="contact">
-  <h2>Contact</h2>
-  <p>
-    For collaboration, consulting, or AI automation system design inquiries:
-  </p>
-  <p>
-    Email: <a href="mailto:benktc1975@gmail.com">benktc1975@gmail.com</a>
-  </p>
+  <h2>取得联系</h2>
+  <p>无论是关于 AI 自动化系统的探讨，还是想交流 PC 硬件与极客技术，随时欢迎：</p>
+  <p>Email: <a href="mailto:benktc1975@gmail.com">benktc1975@gmail.com</a></p>
 </section>
 
 </main>
 
 <footer class="container footer">
-  <p>
-    © 2026 Benjiem — AI Automation Specialist
-  </p>
+  <p>© 2026 Benjiem — Built with pure HTML & CI/CD Automation.</p>
 </footer>
 
 <script src="assets/app.js"></script>
-
-<!-- Background Music -->
-<audio id="bgm" src="assets/bgm.mp3" preload="auto" loop playsinline></audio>
-
-<button id="bgmToggle" type="button" aria-label="Background music toggle">
-  <span class="cyb-dot" aria-hidden="true"></span>
-  <span class="cyb-text">🔇 BGM</span>
-</button>
-
-<script>
-  (function () {
-    const audio = document.getElementById("bgm");
-    const btn = document.getElementById("bgmToggle");
-
-    // Recommended background volume: 0.08 ~ 0.18
-    audio.volume = 0;
-const targetVolume = 0.12;
-
-function fadeInAudio() {
-  const step = 0.01;
-  const interval = setInterval(() => {
-    if (audio.volume < targetVolume) {
-      audio.volume = Math.min(audio.volume + step, targetVolume);
-    } else {
-      clearInterval(interval);
-    }
-  }, 60);
-}
-
-    // Autoplay policy: try muted autoplay first
-    audio.muted = true;
-
-    async function tryAutoplayMuted() {
-      try { await audio.play(); } catch (e) { /* ignore */ }
-    }
-
-    function setBtnState(playing) {
-      btn.classList.toggle("is-on", playing);
-      btn.querySelector(".cyb-text").textContent = playing ? "🔊 BGM" : "🔇 BGM";
-    }
-
-    // Attempt muted autoplay on load
-    tryAutoplayMuted();
-
-    // Unlock audio on first user interaction
-    const unlock = async () => {
-      try {
-        audio.muted = false;
-await audio.play();
-fadeInAudio();
-setBtnState(true);
-     
-      } catch (e) {
-        // If blocked, user can manually toggle
-      } finally {
-        window.removeEventListener("pointerdown", unlock);
-        window.removeEventListener("keydown", unlock);
-      }
-    };
-    window.addEventListener("pointerdown", unlock, { once: true });
-    window.addEventListener("keydown", unlock, { once: true });
-
-    // Manual toggle
-    btn.addEventListener("click", async () => {
-      if (!audio.paused) {
-        audio.pause();
-        setBtnState(false);
-        return;
-      }
-      try {
-        audio.muted = false;
-        await audio.play();
-        setBtnState(true);
-      } catch (e) {
-        // ignore
-      }
-    });
-
-    // === Pro UX: pause BGM when video plays (avoid double audio) ===
-    const video = document.getElementById("heroVideo");
-    let resumeBgmAfterVideo = false;
-
-    if (video) {
-      video.addEventListener("play", () => {
-  // 记录视频开始前 BGM 是否在播放
-  resumeBgmAfterVideo = !audio.paused;
-
-  if (!audio.paused) {
-    audio.pause();
-    setBtnState(false);
-  }
-
-  // 👇 视频播放时隐藏 BGM 按钮
-  btn.classList.add("hidden");
-});
-
-      const tryResumeBgm = async () => {
-        if (!resumeBgmAfterVideo) return;
-        resumeBgmAfterVideo = false;
-        try {
-          audio.muted = false;
-          await audio.play();
-          setBtnState(true);
-        } catch (e) {
-          // If blocked, keep off and let user toggle manually
-        }
-      };
-
-      video.addEventListener("pause", () => {
-  tryResumeBgm();
-  btn.classList.remove("hidden");  // 恢复按钮
-});
-
-video.addEventListener("ended", () => {
-  tryResumeBgm();
-  btn.classList.remove("hidden");  // 恢复按钮
-});
-    }
-
-    // Initial button state
-    setBtnState(false);
-  })();
-</script>
 
 </body>
 </html>
