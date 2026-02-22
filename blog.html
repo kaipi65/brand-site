@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>技术手记与随笔 | Benjiem 数字花园</title>
+<meta name="description" content="关于 AI 自动化、系统架构、PC 硬件折腾与极客生活的记录。" />
+
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+<style>
+  .blog-header { text-align: center; margin-bottom: 3rem; margin-top: 2rem; }
+  .blog-header p { color: #888; max-width: 600px; margin: 0 auto; }
+  
+  .article-list { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 4rem; }
+  .article-card { background: rgba(255,255,255,0.02); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+  .article-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.15); box-shadow: 0 10px 25px rgba(0,0,0,0.3); background: rgba(255,255,255,0.04); }
+  
+  .article-meta { font-size: 0.85rem; color: #666; margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; }
+  .article-meta span.tag { background: rgba(255,255,255,0.08); padding: 3px 10px; border-radius: 20px; color: #ddd; font-weight: 500; }
+  
+  .article-card h2 { margin: 0 0 1rem 0; font-size: 1.6rem; color: #fff; }
+  .article-card p { color: #aaa; line-height: 1.6; margin-bottom: 1.5rem; font-size: 0.95rem; }
+  
+  .read-more { display: inline-block; color: #4facfe; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: color 0.3s; }
+  .read-more:hover { color: #00f2fe; text-decoration: underline; }
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Benjiem Home">
+      <span class="logoGlow"></span>
+      <span class="brandText">Benjiem</span>
+    </a>
+    <nav class="navbar" aria-label="Primary">
+      <a data-nav href="index.html" class="navlink">首页</a>
+      <a data-nav href="blog.html" class="navlink" style="color: #fff; font-weight: bold;">文章</a>
+      <a data-nav href="media.html" class="navlink">影音图库</a>
+      <a data-nav href="apps.html" class="navlink">小程序 & AI</a>
+      <a data-nav href="index.html#contact" class="navlink nav-cta">联系我</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<div class="blog-header">
+  <h1>技术手记与生活随笔</h1>
+  <p>记录在构建自动化系统、折腾底层硬件、以及日常探索 AI 边界时的思考与踩坑经验。</p>
+</div>
+
+<div class="article-list">
+
+  <article class="article-card">
+    <div class="article-meta">
+      <span class="tag">硬件架构</span>
+      <span>2026-02-18</span>
+    </div>
+    <h2>AI 服务器 PCB 制造的技术壁垒与供应链分析</h2>
+    <p>随着大模型训练对算力密度的要求呈现指数级增长，AI 服务器对底层 PCB（印制电路板）的高频高速传输、层数及散热能力提出了极为苛刻的挑战。本文梳理了 AI 硬件架构演进对 PCB 带来的增量需求，并盘点了目前国内几家在高性能 PCB 领域表现抢眼的上市公司。</p>
+    <a href="#" class="read-more">阅读全文 →</a>
+  </article>
+
+  <article class="article-card">
+    <div class="article-meta">
+      <span class="tag">AI 实验</span>
+      <span>2026-02-17</span>
+    </div>
+    <h2>AI 视频生成踩坑录：从提示词微调到中文字体渲染修复</h2>
+    <p>近期深度测试了几个文生视频大模型。整体画面的动态一致性（比如生成滑板猫咪）已经非常惊艳，但在复杂汉字渲染上仍存在明显缺陷。例如在生成带有“馬年鴻運”字样的贺岁视频时，依然出现了笔画扭曲的现象，本文记录了如何通过重新生成和局部重绘工作流来修正这些错别字幻觉。</p>
+    <a href="#" class="read-more">阅读全文 →</a>
+  </article>
+
+  <article class="article-card">
+    <div class="article-meta">
+      <span class="tag">效率自动化</span>
+      <span>2026-02-10</span>
+    </div>
+    <h2>生产力拉满：教你写几个每天都在用的 iOS 自动化快捷指令</h2>
+    <p>不要只在服务端做自动化，手机端的碎片化操作同样需要被优化。分享并拆解我个人编写的几个高频 iOS Shortcuts（快捷指令），包括自动化无水印视频下载、一键将本地视频转化为高质量 GIF 动图等，附完整的逻辑流配置步骤。</p>
+    <a href="#" class="read-more">阅读全文 →</a>
+  </article>
+
+  <article class="article-card">
+    <div class="article-meta">
+      <span class="tag">极客折腾</span>
+      <span>2026-01-25</span>
+    </div>
+    <h2>PC 疑难杂症排雷：BIOS密码破解、CPU风扇报错及DLL修复</h2>
+    <p>作为硬件老炮，这周帮朋友处理了几起非常经典的 PC 硬件与系统级故障。文章详细记录了跳线短接清除遗忘的主板 BIOS 密码、排查并解决开机 CPU Fan Error 报警，以及利用系统工具修复顽固缺失 DLL 动态链接库文件的全过程。</p>
+    <a href="#" class="read-more">阅读全文 →</a>
+  </article>
+
+  <article class="article-card">
+    <div class="article-meta">
+      <span class="tag">游戏随笔</span>
+      <span>2025-12-14</span>
+    </div>
+    <h2>《暗黑破坏神 4》折腾记：装备词缀机制与刷子游戏的乐趣</h2>
+    <p>工作之余的解压利器。探讨了一下近期《暗黑系列》最新作 Diablo 4 的价格走势以及底层数值设计。从一个喜欢做系统优化的开发者的角度来看，暗黑 4 的装备词缀库和伤害乘区计算，其实也是一套非常庞大且复杂的“自动化状态机”。</p>
+    <a href="#" class="read-more">阅读全文 →</a>
+  </article>
+
+</div>
+
+</main>
+
+<footer class="container footer">
+  <p>© 2026 Benjiem — Built with pure HTML & CI/CD Automation.</p>
+</footer>
+
+<script src="assets/app.js"></script>
+
+</body>
+</html>
